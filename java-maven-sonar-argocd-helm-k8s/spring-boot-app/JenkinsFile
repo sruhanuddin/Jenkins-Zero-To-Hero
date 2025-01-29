@@ -62,7 +62,8 @@
                     git config --global user.name “sruhanuddin”
                     git config --global user.email "sruhanuddin@gmail.com"
                     BUILD_NUMBER=${BUILD_NUMBER}
-                    sed -i 's+ruhan3399/ultimate-cicd.*+ruhan3399/ultimate-cicd:${BUILD_NUMBER}+g' java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
+                    DOCKER_IMAGE = "ruhan3399/ultimate-cicd:${BUILD_NUMBER}"
+                    sed -i 's+ruhan3399/ultimate-cicd.*+${DOCKER_IMAGE}+g' java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
                     // sed -i 's+ruhan3399/ultimate-cicd.*+ruhan3399/ultimate-cicd:14+g'
                     git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
